@@ -11,6 +11,25 @@ resources:
     integration: ric03uec-dockerhub
 
 jobs:
+  - name: aarch_64_Ubuntu_16_04_prep
+    type: runSh
+    runtime:
+      architecture: aarch64
+      os: Ubuntu_16.04
+      container: false
+    steps:
+      - IN: aarch_64_Ubuntu_16_04_prep_repo
+        switch: off
+      - IN: aarch_dh_cli
+        switch: off
+      - IN: aarch64_u16_repo
+      - TASK:
+          script:
+            - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
+            - ./buildImage.sh aarch64 u16 aarch_64_Ubuntu_16_04_prep
+            - popd
+      - OUT: aarch64_u16_img
+
   - name: microbase_aarch_64_Ubuntu_16_04_prep
     type: runSh
     runtime:
@@ -30,3 +49,43 @@ jobs:
             - ./buildImage.sh aarch64 microbase microbase_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_microbase_img
+
+  - name: pyt_aarch_64_Ubuntu_16_04_prep
+    type: runSh
+    runtime:
+      architecture: aarch64
+      os: Ubuntu_16.04
+      container: false
+    steps:
+      - IN: aarch_64_Ubuntu_16_04_prep_repo
+        switch: off
+      - IN: aarch_dh_cli
+        switch: off
+      - IN: aarch64_u16_img
+      - IN: aarch64_u16pyt_repo
+      - TASK:
+          script:
+            - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
+            - ./buildImage.sh aarch64 u16pyt pyt_aarch_64_Ubuntu_16_04_prep
+            - popd
+      - OUT: aarch64_u16pyt_img
+
+  - name: cpp_aarch_64_Ubuntu_16_04_prep
+    type: runSh
+    runtime:
+      architecture: aarch64
+      os: Ubuntu_16.04
+      container: false
+    steps:
+      - IN: aarch_64_Ubuntu_16_04_prep_repo
+        switch: off
+      - IN: aarch_dh_cli
+        switch: off
+      - IN: aarch64_u16_img
+      - IN: aarch64_u16cpp_repo
+      - TASK:
+          script:
+            - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
+            - ./buildImage.sh aarch64 u16cpp cpp_aarch_64_Ubuntu_16_04_prep
+            - popd
+      - OUT: aarch64_u16cpp_img
