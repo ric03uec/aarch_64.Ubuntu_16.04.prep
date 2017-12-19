@@ -29,6 +29,66 @@ resources:
       sourceName: shippable/reqExec
       branch: master
 
+# - name: aarch64_u16_repo
+#    type: gitRepo
+#    integration: ric03uec-github
+#    pointer:
+#      sourceName: dry-dock-aarch64/u16
+#      branch: master
+#
+#  - name: aarch64_u16_img
+#    type: image
+#    integration: shipDH
+#    pointer:
+#      sourceName: drydockaarch64/u16
+#    seed:
+#      versionName: master
+
+#  - name: aarch64_u16pyt_repo
+#    type: gitRepo
+#    integration: ric03uec-github
+#    pointer:
+#      sourceName: dry-dock-aarch64/u16pyt
+#      branch: master
+
+#  - name: aarch64_u16pyt_img
+#    type: image
+#    integration: shipDH
+#    pointer:
+#      sourceName: drydockaarch64/u16pyt
+#    seed:
+#      versionName: master
+
+#  - name: aarch64_u16cpp_repo
+#    type: gitRepo
+#    integration: ric03uec-github
+#    pointer:
+#      sourceName: dry-dock-aarch64/u16cpp
+#      branch: master
+
+#  - name: aarch64_u16cpp_img
+#    type: image
+#    integration: shipDH
+#    pointer:
+#      sourceName: drydockaarch64/u16cpp
+#    seed:
+#      versionName: master
+
+#  - name: aarch64_microbase_repo
+#    type: gitRepo
+#    integration: ric03uec-github
+#    pointer:
+#      sourceName: dry-dock-aarch64/microbase
+#      branch: master
+
+#  - name: aarch64_microbase_img
+#    type: image
+#    integration: shipDH
+#    pointer:
+#      sourceName: drydockaarch64/microbase
+#    seed:
+#      versionName: master
+
 jobs:
   - name: aarch_64_Ubuntu_16_04_prep
     type: runSh
@@ -43,13 +103,13 @@ jobs:
         switch: off
       - IN: aarch_dh_cli
         switch: off
-      - IN: aarch64_u16_repo
+#      - IN: aarch64_u16_repo
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
             - ./buildImage.sh aarch64 u16 aarch_64_Ubuntu_16_04_prep
             - popd
-      - OUT: aarch64_u16_img
+#      - OUT: aarch64_u16_img
 
   - name: microbase_aarch_64_Ubuntu_16_04_prep
     type: runSh
@@ -64,14 +124,14 @@ jobs:
         switch: off
       - IN: aarch_dh_cli
         switch: off
-      - IN: aarch64_u16_img
-      - IN: aarch64_microbase_repo
+#      - IN: aarch64_u16_img
+#      - IN: aarch64_microbase_repo
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
             - ./buildImage.sh aarch64 microbase microbase_aarch_64_Ubuntu_16_04_prep
             - popd
-      - OUT: aarch64_microbase_img
+#      - OUT: aarch64_microbase_img
 
   - name: pyt_aarch_64_Ubuntu_16_04_prep
     type: runSh
@@ -87,13 +147,13 @@ jobs:
       - IN: aarch_dh_cli
         switch: off
       - IN: aarch64_u16_img
-      - IN: aarch64_u16pyt_repo
+#      - IN: aarch64_u16pyt_repo
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
             - ./buildImage.sh aarch64 u16pyt pyt_aarch_64_Ubuntu_16_04_prep
             - popd
-      - OUT: aarch64_u16pyt_img
+#      - OUT: aarch64_u16pyt_img
 
   - name: cpp_aarch_64_Ubuntu_16_04_prep
     type: runSh
@@ -109,13 +169,13 @@ jobs:
       - IN: aarch_dh_cli
         switch: off
       - IN: aarch64_u16_img
-      - IN: aarch64_u16cpp_repo
+#      - IN: aarch64_u16cpp_repo
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
             - ./buildImage.sh aarch64 u16cpp cpp_aarch_64_Ubuntu_16_04_prep
             - popd
-      - OUT: aarch64_u16cpp_img
+#      - OUT: aarch64_u16cpp_img
 
   - name: reqExec_aarch64_Ubuntu_16_04_pack
     type: runSh
@@ -155,7 +215,7 @@ jobs:
       - IN: package_reqExec_x86_64_macOS_10_12
       - IN: reqExec_aarch64_Ubuntu_16_04_pack
       - IN: execTemplates_repo
-      - IN: aarch64_microbase_img
+#      - IN: aarch64_microbase_img
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "reqProc_repo")
