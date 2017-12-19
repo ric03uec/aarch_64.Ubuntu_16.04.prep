@@ -10,6 +10,19 @@ resources:
     type: cliConfig
     integration: ric03uec-dockerhub
 
+  - name: aarch_bits_access_cli
+    type: cliConfig
+    integration: aws_bits_access
+    pointer:
+      region: us-east-1
+
+  - name: aarch_reqExec_repo
+    type: gitRepo
+    integration: ric03uec-github
+    pointer:
+      sourceName: shippable/reqExec
+      branch: master
+
 jobs:
   - name: aarch_64_Ubuntu_16_04_prep
     type: runSh
@@ -89,3 +102,17 @@ jobs:
             - ./buildImage.sh aarch64 u16cpp cpp_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16cpp_img
+
+  - name: reqExec_aarch64_Ubuntu_16_04_pack
+    type: runSh
+    steps:
+      - IN: aarch_64_Ubuntu_16_04_prep_repo
+        switch: off
+      - IN: aarch_bits_access_cli
+        switch: off
+      - IN: aarch_reqExec_repo
+      - TASK:
+          script:
+            - pushd $(shipctl get_resource_state "x86_64_Ubuntu_16_04_prep_repo")
+            - ./buildAndPushReqExecArtifacts.sh aarch_reqExec_repo
+            - popd
