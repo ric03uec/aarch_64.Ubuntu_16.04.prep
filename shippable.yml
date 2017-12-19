@@ -168,7 +168,7 @@ jobs:
         switch: off
       - IN: aarch_dh_cli
         switch: off
-      - IN: aarch64_u16_img
+#      - IN: aarch64_u16_img
 #      - IN: aarch64_u16cpp_repo
       - TASK:
           script:
