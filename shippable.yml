@@ -29,7 +29,7 @@ resources:
       sourceName: shippable/reqExec
       branch: master
 
- - name: aarch64_u16_repo
+  - name: aarch64_u16_repo
     type: gitRepo
     integration: ric03uec-github
     pointer:
