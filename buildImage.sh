@@ -11,8 +11,6 @@ set_context() {
   export RES_REPO_UP=$(shipctl to_uppercase $RES_REPO)
   export RES_REPO_COMMIT=$(eval echo "$"$RES_REPO_UP"_COMMIT")
 
-  echo $(shipctl get_resource_version_key "$RES_REPO" "COMMIT")
-
   export IMAGE_NAME=$(echo $IMG | awk '{print tolower($0)}')
   export RES_IMAGE_OUT=$CONTEXT"_"$IMG"_img"
   export BLD_IMG=$HUB_ORG/$IMAGE_NAME:$TAG_NAME
@@ -54,8 +52,8 @@ create_out_state() {
 
 main() {
   set_context
-#  create_image
-#  create_out_state
+  create_image
+  create_out_state
 }
 
 main
