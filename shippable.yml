@@ -6,6 +6,13 @@ resources:
       sourceName: shippable/aarch_64.Ubuntu_16.04.prep
       branch: master
 
+  - name: aarch_reqProc_repo
+    type: gitRepo
+    integration: ric03uec-github
+    pointer:
+      sourceName: shippable/reqProc
+      branch: master
+
   - name: aarch_dh_cli
     type: cliConfig
     integration: ric03uec-dockerhub
@@ -209,7 +216,7 @@ jobs:
         switch: off
       - IN: aarch_dh_cli
         switch: off
-      - IN: reqProc_repo
+      - IN: aarch_reqProc_repo
       - IN: reqExec_x86_64_Ubuntu_14_04_pack
       - IN: reqExec_x86_64_Ubuntu_16_04_pack
       - IN: reqExec_x86_64_CentOS_7_pack
@@ -219,6 +226,6 @@ jobs:
       - IN: aarch64_microbase_img
       - TASK:
           script:
-            - pushd $(shipctl get_resource_state "reqProc_repo")
+            - pushd $(shipctl get_resource_state "aarch_reqProc_repo")
             - ./build.sh aarch64 Ubuntu_16.04 drydockaarch64 reqproc
             - popd
