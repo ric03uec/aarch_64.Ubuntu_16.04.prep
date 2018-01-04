@@ -198,6 +198,7 @@ jobs:
     runtime:
       architecture: aarch64
       os: Ubuntu_16.04
+      container: false
     steps:
       - IN: aarch_64_Ubuntu_16_04_prep_repo
         switch: off
