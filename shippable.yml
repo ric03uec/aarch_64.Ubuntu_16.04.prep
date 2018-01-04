@@ -198,6 +198,8 @@ jobs:
     runtime:
       architecture: aarch64
       os: Ubuntu_16.04
+      # pip fails while installing pyinstaller, while running in a container.
+      # so, running this job on host
       container: false
     steps:
       - IN: aarch_64_Ubuntu_16_04_prep_repo
@@ -206,6 +208,11 @@ jobs:
         switch: off
       - IN: aarch64_microbase_img
       - IN: aarch_reqExec_repo
+      - TASK:
+          name: install awscli
+          script:
+            - export LC_ALL=C
+            - pip install awscli==1.11.91
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
