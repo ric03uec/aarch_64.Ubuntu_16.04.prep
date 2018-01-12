@@ -109,8 +109,7 @@ jobs:
     triggerMode: parallel
     dependencyMode: strict
     runtime:
-      architecture: aarch64
-      os: Ubuntu_16.04
+      cluster: aarch64_u1604_cus_01
       container: false
     steps:
       - IN: aarch_64_Ubuntu_16_04_prep_repo
@@ -130,8 +129,7 @@ jobs:
     triggerMode: parallel
     dependencyMode: strict
     runtime:
-      architecture: aarch64
-      os: Ubuntu_16.04
+      cluster: aarch64_u1604_cus_01
       container: false
     steps:
       - IN: aarch_64_Ubuntu_16_04_prep_repo
@@ -152,8 +150,7 @@ jobs:
     triggerMode: parallel
     dependencyMode: strict
     runtime:
-      architecture: aarch64
-      os: Ubuntu_16.04
+      cluster: aarch64_u1604_cus_01
       container: false
     steps:
       - IN: aarch_64_Ubuntu_16_04_prep_repo
@@ -174,8 +171,7 @@ jobs:
     triggerMode: parallel
     dependencyMode: strict
     runtime:
-      architecture: aarch64
-      os: Ubuntu_16.04
+      cluster: aarch64_u1604_cus_01
       container: false
     steps:
       - IN: aarch_64_Ubuntu_16_04_prep_repo
@@ -196,8 +192,7 @@ jobs:
     triggerMode: parallel
     dependencyMode: strict
     runtime:
-      architecture: aarch64
-      os: Ubuntu_16.04
+      cluster: aarch64_u1604_cus_01
       # pip fails while installing pyinstaller, while running in a container.
       # so, running this job on host
       container: false
@@ -224,8 +219,7 @@ jobs:
     triggerMode: parallel
     dependencyMode: strict
     runtime:
-      architecture: aarch64
-      os: Ubuntu_16.04
+      cluster: aarch64_u1604_cus_01
       container: false
     steps:
       - IN: aarch_bits_ecr_cli
