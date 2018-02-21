@@ -239,7 +239,7 @@ jobs:
             # Since Go can cross-compile, use a x86_64 image,
             options:
               imageName: drydock/u16golall
-              imageTag: master
+              imageTag: v6.1.4
           script:
             # Note: gvm doesn't seem to load automatically, so add it to the PATH manually.
             # Remove this if its not needed anymore.
