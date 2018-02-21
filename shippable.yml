@@ -20,6 +20,13 @@ resources:
       sourceName: shippable/execTemplates
       branch: master
 
+  - name: aarch_64_micro_repo
+    type: gitRepo
+    integration: avinci_gh
+    pointer:
+      sourceName: Shippable/micro
+      branch: master
+
   - name: aarch_dh_cli
     type: cliConfig
     integration: ric03uec-dockerhub
@@ -212,6 +219,33 @@ jobs:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
             - ./buildAndPushReqExecArtifacts.sh aarch_reqExec_repo
+            - popd
+
+  - name: reports_aarch64_Ubuntu_16_04_pack
+    type: runSh
+    triggerMode: parallel
+    dependencyMode: strict
+    steps:
+      - IN: aarch_64_Ubuntu_16_04_prep_repo
+        switch: off
+      - IN: aarch_bits_access_cli
+        switch: off
+      # Reports are unlikely to change too often, so manually build when required.
+      - IN: aarch_64_micro_repo
+        switch: off
+      - TASK:
+          runtime:
+            # Use aarch64/Ubuntu_16.04 image and pool if/when it becomes available.
+            # Since Go can cross-compile, use a x86_64 image,
+            options:
+              imageName: drydock/u16golall
+              imageTag: master
+          script:
+            # Note: gvm doesn't seem to load automatically, so add it to the PATH manually.
+            # Remove this if its not needed anymore.
+            - PATH="$PATH:/root/.gvm/gos/go1.9.2/bin"
+            - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
+            - ./buildAndPushReportsArtifacts.sh aarch_64_micro_repo
             - popd
 
   - name: reqProc_aarch64_Ubuntu_16_04_prep
