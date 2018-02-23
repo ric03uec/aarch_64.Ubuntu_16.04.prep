@@ -219,7 +219,7 @@ jobs:
             - popd
       - OUT: aarch64_microbase_img
 
-- name: nodall_aarch_64_Ubuntu_16_04_prep
+  - name: nodall_aarch_64_Ubuntu_16_04_prep
     type: runSh
     triggerMode: parallel
     dependencyMode: strict
