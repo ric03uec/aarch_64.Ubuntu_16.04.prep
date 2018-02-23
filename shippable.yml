@@ -95,6 +95,21 @@ resources:
     seed:
       versionName: master
 
+  - name: aarch64_u16javall_repo
+    type: gitRepo
+    integration: ric03uec-github
+    pointer:
+      sourceName: dry-dock-aarch64/u16javall
+      branch: master
+
+  - name: aarch64_u16javall_img
+    type: image
+    integration: shipDH
+    pointer:
+      sourceName: drydockaarch64/u16javall
+    seed:
+      versionName: master
+
   - name: aarch64_u16nodall_repo
     type: gitRepo
     integration: ric03uec-github
@@ -218,6 +233,27 @@ jobs:
             - ./buildImage.sh aarch64 microbase microbase_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_microbase_img
+
+  - name: javall_aarch_64_Ubuntu_16_04_prep
+    type: runSh
+    triggerMode: parallel
+    dependencyMode: strict
+    runtime:
+      nodePool: aarch64_u1604_cus_01
+      container: false
+    steps:
+      - IN: aarch_64_Ubuntu_16_04_prep_repo
+        switch: off
+      - IN: aarch_dh_cli
+        switch: off
+      - IN: aarch64_u16all_img
+      - IN: aarch64_u16javall_repo
+      - TASK:
+          script:
+            - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
+            - ./buildImage.sh aarch64 u16javall javall_aarch_64_Ubuntu_16_04_prep
+            - popd
+      - OUT: aarch64_u16javall_img
 
   - name: nodall_aarch_64_Ubuntu_16_04_prep
     type: runSh
