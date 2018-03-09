@@ -54,14 +54,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16
+      sourceName: dry-dock/aarch64_u16
       branch: master
 
   - name: aarch64_u16_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16
+      sourceName: drydock/aarch64_u16
     seed:
       versionName: master
 
@@ -69,14 +69,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16all
+      sourceName: dry-dock/aarch64_u16all
       branch: master
 
   - name: aarch64_u16all_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16all
+      sourceName: drydock/aarch64_u16all
     seed:
       versionName: master
 
@@ -84,14 +84,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16cppall
+      sourceName: dry-dock/aarch64_u16cppall
       branch: master
 
   - name: aarch64_u16cppall_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16cppall
+      sourceName: drydock/aarch64_u16cppall
     seed:
       versionName: master
 
@@ -99,14 +99,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16pytall
+      sourceName: dry-dock/aarch64_u16pytall
       branch: master
 
   - name: aarch64_u16pytall_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16pytall
+      sourceName: drydock/aarch64_u16pytall
     seed:
       versionName: master
 
@@ -114,14 +114,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16javall
+      sourceName: dry-dock/aarch64_u16javall
       branch: master
 
   - name: aarch64_u16javall_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16javall
+      sourceName: drydock/aarch64_u16javall
     seed:
       versionName: master
 
@@ -129,14 +129,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16nodall
+      sourceName: dry-dock/aarch64_u16nodall
       branch: master
 
   - name: aarch64_u16nodall_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16nodall
+      sourceName: drydock/aarch64_u16nodall
     seed:
       versionName: master
 
@@ -144,14 +144,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16pyt
+      sourceName: dry-dock/aarch64_u16pyt
       branch: master
 
   - name: aarch64_u16pyt_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16pyt
+      sourceName: drydock/aarch64_u16pyt
     seed:
       versionName: master
 
@@ -159,14 +159,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/u16cpp
+      sourceName: dry-dock/aarch64_u16cpp
       branch: master
 
   - name: aarch64_u16cpp_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/u16cpp
+      sourceName: drydock/aarch64_u16cpp
     seed:
       versionName: master
 
@@ -174,14 +174,14 @@ resources:
     type: gitRepo
     integration: ric03uec-github
     pointer:
-      sourceName: dry-dock-aarch64/microbase
+      sourceName: dry-dock/aarch64_microbase
       branch: master
 
   - name: aarch64_microbase_img
     type: image
     integration: shipDH
     pointer:
-      sourceName: drydockaarch64/microbase
+      sourceName: drydock/aarch64_microbase
     seed:
       versionName: master
 
@@ -224,7 +224,7 @@ jobs:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
             - ./buildImage.sh aarch64 u16all all_aarch_64_Ubuntu_16_04_prep
-            - docker run drydockaarch64/u16all:master "/u16all/test/service_test.sh"
+            - docker run drydock/aarch64_u16all:master "/u16all/test/service_test.sh"
             - popd
       - OUT: aarch64_u16all_img
 
@@ -454,5 +454,5 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_reqProc_repo")
-            - ./build.sh aarch64 Ubuntu_16.04 drydockaarch64 reqproc
+            - ./build.sh aarch64 Ubuntu_16.04 drydock aarch64_reqproc
             - popd

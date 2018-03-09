@@ -3,7 +3,7 @@
 export CONTEXT=$1
 export IMG=$2
 export CURR_JOB=$3
-export HUB_ORG="drydockaarch64"
+export HUB_ORG="drydock"
 export TAG_NAME="master"
 
 set_context() {
