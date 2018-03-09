@@ -202,7 +202,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16 aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16 aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16_img
 
@@ -223,7 +223,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16all all_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16all all_aarch_64_Ubuntu_16_04_prep
             - docker run drydock/aarch64_u16all:master "/u16all/test/service_test.sh"
             - popd
       - OUT: aarch64_u16all_img
@@ -245,7 +245,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 microbase microbase_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_microbase microbase_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_microbase_img
 
@@ -266,7 +266,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16javall javall_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16javall javall_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16javall_img
 
@@ -287,7 +287,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16nodall nodall_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16nodall nodall_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16nodall_img
 
@@ -308,7 +308,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16pyt pyt_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16pyt pyt_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16pyt_img
 
@@ -329,7 +329,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16cpp cpp_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16cpp cpp_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16cpp_img
 
@@ -350,7 +350,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16cppall cppall_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16cppall cppall_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16cppall_img
 
@@ -371,7 +371,7 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_64_Ubuntu_16_04_prep_repo")
-            - ./buildImage.sh aarch64 u16pytall pytall_aarch_64_Ubuntu_16_04_prep
+            - ./buildImage.sh aarch64 aarch64_u16pytall pytall_aarch_64_Ubuntu_16_04_prep
             - popd
       - OUT: aarch64_u16pytall_img
 
