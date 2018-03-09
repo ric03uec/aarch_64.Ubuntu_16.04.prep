@@ -7,10 +7,10 @@ export HUB_ORG="drydock"
 export TAG_NAME="master"
 
 set_context() {
-  export RES_REPO=$CONTEXT"_"$IMG"_repo"
+  export RES_REPO=$IMG"_repo"
   export RES_REPO_COMMIT=$(shipctl get_resource_version_key "$RES_REPO" "shaData.commitSha")
   export IMAGE_NAME=$(echo $IMG | awk '{print tolower($0)}')
-  export RES_IMAGE_OUT=$CONTEXT"_"$IMG"_img"
+  export RES_IMAGE_OUT="$IMG"_img"
   export BLD_IMG=$HUB_ORG/$IMAGE_NAME:$TAG_NAME
 
   echo "BUILD_NUMBER=$BUILD_NUMBER"
