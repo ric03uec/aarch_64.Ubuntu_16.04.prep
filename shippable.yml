@@ -454,5 +454,5 @@ jobs:
       - TASK:
           script:
             - pushd $(shipctl get_resource_state "aarch_reqProc_repo")
-            - ./build.sh aarch64 Ubuntu_16.04 drydock aarch64_reqproc
+            - ./build.sh aarch64 Ubuntu_16.04 drydock aarch64_u16reqproc
             - popd
