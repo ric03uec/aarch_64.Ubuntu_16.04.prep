@@ -155,14 +155,6 @@ resources:
     seed:
       versionName: master
 
-  - name: aarch64_u16cpp_img
-    type: image
-    integration: shipDH
-    pointer:
-      sourceName: drydock/aarch64_u16cpp
-    seed:
-      versionName: master
-
   - name: aarch64_u16microbase_repo
     type: gitRepo
     integration: ric03uec-github
